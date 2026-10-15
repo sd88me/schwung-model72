@@ -21,7 +21,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.join(HERE, "..")
-VERSION = "0.1.0"
+VERSION = "1.0.0"
 MODULE_ID = "model-72"
 
 # the switches the plugin owns: (switch key, volume key it follows)

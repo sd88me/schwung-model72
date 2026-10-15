@@ -101,7 +101,7 @@ Needs Schwung on the Move. Download `model-72-module.tar.gz` from the
 
 Then add **Model-72** to a Signal Chain slot. (`scripts/deploy.sh [host] --reboot` does the same from a build.)
 
-Status: running on a Move: the presets, pages and LO played; HI plays but may click (above). Reports are welcome.
+Status: 1.0.0 runs on a Move: the presets, pages, saved presets and LO tested; HI plays but may click (above). Reports are welcome.
 
 ## Building
 
