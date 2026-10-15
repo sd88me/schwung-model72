@@ -21,14 +21,14 @@ software.
 ## Pages
 
 The root page is the **preset browser**: turn the jog wheel to choose a sound, click to open the pages. Its knobs are
-the playable eight: **Cutoff, Emphasis, Contour Amount, Filter Decay, Loudness Decay, Glide, Mod Wheel, Volume**.
+the playable eight: **Cutoff, Emphasis, Contour Amount, Filter Decay, Loudness Decay, Glide, Mod Wheel, Level**.
 
 | Page | Knobs 1-8 |
 |---|---|
 | **Oscillators** | Osc 1 Range · Osc 1 Wave · Osc 2 Range · Osc 2 Wave · Osc 2 Freq · Osc 3 Range · Osc 3 Wave · Osc 3 Freq |
 | **Mixer** | Osc 1 · Osc 2 · Osc 3 · Noise · Ext In / Feedback · Noise Type · Drive · Bass Comp |
 | **Filter** | Cutoff · Emphasis · Contour Amount · Attack · Decay · Sustain · Filter Mode · Filter Mod |
-| **Loudness** | Attack · Decay · Sustain · Volume · Level · Auto Gain, and Auto Gain's correction in dB (a readout) |
+| **Loudness** | Attack · Decay · Sustain · Level · Auto Gain, and Auto Gain's correction in dB (a readout) |
 | **Controller** | Tune · Glide · Glide Switch · Decay Switch · A-440 · Kbd Control 1 · Kbd Control 2 |
 | **Modulation** | Mod Mix · Osc Mod · Osc 3 Control · Mod Wheel · Bend Range · AT > Mod |
 | **Voice** | Quality (LO / HI) · Mode · Voices · Entropy · Note Priority · Retrigger |
@@ -50,6 +50,8 @@ It is CA-72's instrument with a few changes for a box with pads and eight knobs:
   CC 1 wins, and the Mod Wheel knob adds as before. Move has no wheels: pitch bend and CC 1 come in over USB MIDI.
 - **Presets.** CA-72's 19 factory sounds and an Init, converted to this panel: a switched-off source comes in at volume
   0, and Ext In / Feedback is 0 unless the sound used PATCH (Feedback Funk does).
+- **One output control.** The instrument's VOLUME stays at 10 and **Level** (-30 to +12 dB) sets the output; a preset's
+  lower VOLUME is folded into its Level (each within 0.005 dB of the original).
 - **Dropped:** MAIN OUT (always on).
 
 ## Performance and accuracy: the hybrid approach
@@ -75,7 +77,7 @@ measured.
   RETRIGGER, A-440, as on CA-72's panel.
 - **MONO, POLY or UNISON**, 2 to 10 voices, **ENTROPY** (every voice a little different, as every real instrument is).
 - **Stereo**: WIDTH, INNER, DETUNE, SCATTER / DOUBLE, EVEN / CENTER.
-- **FILTER DRIVE**, **AUTO GAIN** (with a readout of its correction) and **VOLUME**.
+- **FILTER DRIVE**, **AUTO GAIN** (with a readout of its correction) and **LEVEL**.
 - **Two mods that are not the instrument's:**
   - **BASS COMP**: raises the filter's input with resonance so the bass holds as EMPHASIS rises (at EMPHASIS 8 the bass
     below the cutoff measured about -17 dB with it against -30 dB without). It is not DRIVE, which raises the input by a

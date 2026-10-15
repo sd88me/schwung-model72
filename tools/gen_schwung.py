@@ -15,6 +15,7 @@ A preset's switched-off source becomes VOLUME 0, and its EXT VOL becomes 0 unles
 the MPC either, so nothing is lost).
 """
 import json
+import math
 import os
 import sys
 
@@ -26,7 +27,7 @@ MODULE_ID = "model-72"
 # the switches the plugin owns: (switch key, volume key it follows)
 DERIVED = [("osc1_on", "osc1_volume"), ("osc2_on", "osc2_volume"), ("osc3_on", "osc3_volume"), ("noise_on", "noise_volume"),
            ("patch", "ext_volume")]
-FIXED = {"ext_on": "Off", "main_output": "On", "feedback": 0}
+FIXED = {"ext_on": "Off", "main_output": "On", "feedback": 0, "volume": 10}
 HIDDEN = {k for k, _ in DERIVED} | set(FIXED) | {"auto_db"} | {"dot_%d" % i for i in range(1, 11)}
 
 # (level key, page name, cell-label prefix for the held-knob header, [param keys]); eight knobs a page at most, in knob order
@@ -37,7 +38,7 @@ PAGES = [
                             "bass_comp"]),
     ("filter", "Filter", "", ["cutoff", "emphasis", "contour_amount", "filter_attack", "filter_decay", "filter_sustain",
                               "filter_mode", "filter_mod"]),
-    ("loudness", "Loudness", "", ["loudness_attack", "loudness_decay", "loudness_sustain", "volume", "level", "auto_gain"]),
+    ("loudness", "Loudness", "", ["loudness_attack", "loudness_decay", "loudness_sustain", "level", "auto_gain"]),
     ("controller", "Controller", "", ["tune", "glide", "glide_on", "decay_on", "a440", "keyboard_control_1", "keyboard_control_2"]),
     ("mod", "Modulation", "", ["mod_mix", "osc_mod", "osc3_control", "mod_wheel", "midi_bend_range", "at_mod"]),
     ("voice", "Voice", "", ["quality", "mode", "voices", "entropy", "note_priority", "retrigger"]),
@@ -46,7 +47,7 @@ PAGES = [
 # readouts listed on a page (not on a knob)
 READOUTS = {"loudness": ["auto_db"]}
 # the root page's knobs: the playable eight
-ROOT_KNOBS = ["cutoff", "emphasis", "contour_amount", "filter_decay", "loudness_decay", "glide", "mod_wheel", "volume"]
+ROOT_KNOBS = ["cutoff", "emphasis", "contour_amount", "filter_decay", "loudness_decay", "glide", "mod_wheel", "level"]
 
 # (full name for the held-knob header, short cell label); keys not listed use params.json's name for both
 NAMES = {
@@ -121,8 +122,18 @@ def convert(values, params):
         if not on(sw): out[vol] = 0
     if not on("patch"): out["ext_volume"] = 0
     for sw, vol in DERIVED: out[sw] = 1 if out[vol] > 0 else 0
+    # VOLUME fixed at 10: a preset's lower VOLUME goes into LEVEL (both are the output's gain, after the voices)
+    out["level"] = round(min(12.0, out["level"] + 20 * math.log10(output_gain(out["volume"] / 10) / output_gain(1.0))), 2)
     for k, v in FIXED.items(): out[k] = params[k]["options"].index(v) if isinstance(v, str) else v
     return out
+
+
+def output_gain(v):
+    """The engine's VOLUME law (ca72-mpc lib.rs `output_gain`): an audio-taper 5K pot loaded by 10K."""
+    t = (81.0 ** min(max(v, 0.0), 1.0) - 1.0) / 80.0
+    top, bottom = 5e3 * (1 - t), 5e3 * t
+    load = bottom * 10e3 / (bottom + 10e3)
+    return load / (top + load) if load > 0 else 1e-9
 
 
 def state(vals):
@@ -153,6 +164,16 @@ def build():
     for pr in json.load(open(os.path.join(ROOT, "engine", "presets.json")))["presets"]:
         presets.append((pr["name"], convert(pr["values"], params)))
     return metas, hier, presets
+
+
+def preset_pairs(path):
+    """For test/test_presets.c: each factory preset's state with its own VOLUME and LEVEL, and as converted."""
+    _, params = load()
+    with open(path, "w") as f:
+        for pr in json.load(open(os.path.join(ROOT, "engine", "presets.json")))["presets"]:
+            c = convert(pr["values"], params)
+            o = dict(c, volume=pr["values"]["volume"], level=pr["values"]["level"])
+            f.write("%s\n%s\n%s\n" % (pr["name"], state(o), state(c)))
 
 
 def cstr(s):

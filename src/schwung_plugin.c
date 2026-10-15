@@ -150,7 +150,7 @@ static void sw_set(void *p, const char *key, const char *val) {
     if (!strcmp(key, "at_mod")) { w->at_mod = atoi(val) != 0; send_mod(w); return; }
     for (int i = 0; i < NDERIVED; i++)   /* the switches are the plugin's own */
         if (!strcmp(key, DERIVED[i][0])) return;
-    if (!strcmp(key, "ext_on") || !strcmp(key, "main_output") || !strcmp(key, "feedback")) return;
+    if (!strcmp(key, "ext_on") || !strcmp(key, "main_output") || !strcmp(key, "feedback") || !strcmp(key, "volume")) return;
     ca72_set_param(w->eng, key, val);
     if (!strcmp(key, "state")) { derive_switches(w); return; }
     for (int i = 0; i < NDERIVED; i++)

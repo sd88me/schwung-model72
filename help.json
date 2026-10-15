@@ -26,7 +26,7 @@
     "Emphasis, Amount,",
     "F Decay, L Decay,",
     "Glide, Mod Wheel,",
-    "Volume."
+    "Level."
    ]
   },
   {
@@ -68,9 +68,9 @@
      "title": "Loudness",
      "lines": [
       "The loudness contour,",
-      "Volume, Level, Auto",
-      "Gain and its dB",
-      "readout."
+      "Level (the output,",
+      "in dB), Auto Gain",
+      "and its dB readout."
      ]
     },
     {

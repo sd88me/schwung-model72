@@ -28,3 +28,6 @@ PY
 gcc -O1 -g -Wall -Wextra -fsanitize=address,undefined -Ivendor/schwung -Isrc src/schwung_plugin.c test/host_sim.c -o build/host_sim \
     -Lbuild/rust/x86_64 -lca72_mpc -lpthread -ldl -lm
 echo "== host_sim"; ASAN_OPTIONS=detect_leaks=0 ./build/host_sim
+python3 -c 'import sys; sys.path.insert(0, "tools"); import gen_schwung; gen_schwung.preset_pairs("build/preset_pairs.txt")'
+gcc -O2 -Wall test/test_presets.c -o build/test_presets -Lbuild/rust/x86_64 -lca72_mpc -lpthread -ldl -lm
+echo "== test_presets"; ./build/test_presets

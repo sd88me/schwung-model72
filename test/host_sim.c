@@ -75,6 +75,12 @@ int main(void) {
     midi3(0x80, 60, 0);
     quiet();
 
+    {   /* VOLUME is fixed (test_presets.c checks the presets' VOLUME went into LEVEL) */
+        a->set_param(h, "preset", "7");
+        CHECK(get("volume") == 10, "Volume is fixed at 10");
+        a->set_param(h, "volume", "5");
+        CHECK(get("volume") == 10, "and not writable");
+    }
     CHECK(get("auto_db") <= 0 && get("auto_db") > -16, "Auto dB reads");
     CHECK(a->get_param(h, "no_such_key", buf, sizeof buf) < 0, "an unknown key reads as missing");
 
