@@ -1,0 +1,14 @@
+[package]
+name = "ca72-mpc"
+description = "The CA-72's voices as an MPC OS plug-in engine (C ABI for mpc-vst-plugins' wrapper)"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+publish = false
+
+[lib]
+crate-type = ["staticlib", "rlib"]
+
+[dependencies]
+ca72 = { path = "../ca72" }
+libm = "0.2"

@@ -1,0 +1,19 @@
+{
+ "id": "model-72",
+ "name": "Model-72",
+ "abbrev": "M72",
+ "version": "0.1.0",
+ "description": "Circuit-modelled 1970s monosynth (CA-72): three oscillators, the ladder filter, mono/poly/unison, stereo",
+ "dsp": "dsp.so",
+ "api_version": 2,
+ "component_type": "sound_generator",
+ "author": "sd88me",
+ "capabilities": {
+  "audio_out": true,
+  "midi_in": true,
+  "midi_out": false,
+  "aftertouch": true,
+  "chainable": true,
+  "component_type": "sound_generator"
+ }
+}

@@ -1,0 +1,123 @@
+{
+ "title": "Model-72",
+ "children": [
+  {
+   "title": "Overview",
+   "lines": [
+    "Circuit-modelled",
+    "1970s monosynth",
+    "(the CA-72 engine).",
+    "",
+    "3 oscillators, the",
+    "ladder filter, two",
+    "contours. MONO, POLY",
+    "or UNISON, 2-10",
+    "voices, stereo."
+   ]
+  },
+  {
+   "title": "Playing",
+   "lines": [
+    "Root page: jog picks",
+    "a preset, click opens",
+    "the pages.",
+    "",
+    "Knobs 1-8: Cutoff,",
+    "Emphasis, Amount,",
+    "F Decay, L Decay,",
+    "Glide, Mod Wheel,",
+    "Volume."
+   ]
+  },
+  {
+   "title": "Pages",
+   "children": [
+    {
+     "title": "Oscillators",
+     "lines": [
+      "Range, wave of each",
+      "oscillator; Freq of",
+      "2 and 3."
+     ]
+    },
+    {
+     "title": "Mixer",
+     "lines": [
+      "A source plays while",
+      "its volume is above",
+      "0: no on switches.",
+      "",
+      "Patch: the output",
+      "cabled into EXT IN",
+      "(feedback). 0 = off.",
+      "",
+      "Drive, Bass Comp:",
+      "the filter's input."
+     ]
+    },
+    {
+     "title": "Filter",
+     "lines": [
+      "Cutoff, Emphasis,",
+      "Amount, the filter",
+      "contour, Filter Mode",
+      "and Filter Mod."
+     ]
+    },
+    {
+     "title": "Loudness",
+     "lines": [
+      "The loudness contour,",
+      "Volume, Level, Auto",
+      "Gain and its dB",
+      "readout."
+     ]
+    },
+    {
+     "title": "Controller",
+     "lines": [
+      "Tune, Glide, the",
+      "Glide and Decay",
+      "switches, A-440,",
+      "Kbd Control 1 and 2."
+     ]
+    },
+    {
+     "title": "Modulation",
+     "lines": [
+      "Mod Mix, Osc Mod,",
+      "Osc 3 Control, Mod",
+      "Wheel, Bend Range.",
+      "",
+      "AT>Mod: pad pressure",
+      "turns the mod wheel",
+      "(the higher wins)."
+     ]
+    },
+    {
+     "title": "Voice",
+     "lines": [
+      "Quality LO: up to 10",
+      "voices. HI: one voice",
+      "through the circuit's",
+      "own filter (more",
+      "CPU; ready a few",
+      "seconds after load).",
+      "",
+      "Mode, Voices,",
+      "Entropy, Priority,",
+      "Retrigger."
+     ]
+    },
+    {
+     "title": "Stereo",
+     "lines": [
+      "Width, Inner, Detune,",
+      "Played As (Scatter /",
+      "Double), Placement."
+     ]
+    }
+   ]
+  }
+ ]
+}

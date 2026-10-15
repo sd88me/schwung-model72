@@ -1,0 +1,606 @@
+{
+ "name": "Model-72",
+ "params": [
+  {
+   "key": "quality",
+   "name": "Quality",
+   "options": [
+    "LO",
+    "HI"
+   ],
+   "default": "LO"
+  },
+  {
+   "key": "mode",
+   "name": "Mode",
+   "options": [
+    "MONO",
+    "POLY",
+    "UNISON"
+   ],
+   "default": "MONO"
+  },
+  {
+   "key": "voices",
+   "name": "Voices",
+   "min": 2,
+   "max": 10,
+   "default": 4,
+   "display": "int"
+  },
+  {
+   "key": "entropy",
+   "name": "Entropy",
+   "min": 0,
+   "max": 100,
+   "default": 0,
+   "unit": "%"
+  },
+  {
+   "key": "tune",
+   "name": "Tune",
+   "min": -2.5,
+   "max": 2.5,
+   "default": 0
+  },
+  {
+   "key": "glide",
+   "name": "Glide",
+   "min": 0,
+   "max": 10,
+   "default": 0
+  },
+  {
+   "key": "mod_mix",
+   "name": "Mod Mix",
+   "min": 0,
+   "max": 10,
+   "default": 0
+  },
+  {
+   "key": "osc_mod",
+   "name": "Osc Mod",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "Off"
+  },
+  {
+   "key": "osc3_control",
+   "name": "Osc 3 Ctrl",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "On"
+  },
+  {
+   "key": "osc1_range",
+   "name": "Osc 1 Range",
+   "options": [
+    "LO",
+    "32'",
+    "16'",
+    "8'",
+    "4'",
+    "2'"
+   ],
+   "default": "8'"
+  },
+  {
+   "key": "osc1_waveform",
+   "name": "Osc 1 Wave",
+   "options": [
+    "Triangle",
+    "Shark",
+    "Saw",
+    "Square",
+    "Wide",
+    "Narrow"
+   ],
+   "default": "Saw"
+  },
+  {
+   "key": "osc2_range",
+   "name": "Osc 2 Range",
+   "options": [
+    "LO",
+    "32'",
+    "16'",
+    "8'",
+    "4'",
+    "2'"
+   ],
+   "default": "8'"
+  },
+  {
+   "key": "osc2_frequency",
+   "name": "Osc 2 Freq",
+   "min": -7.5,
+   "max": 7.5,
+   "default": 0
+  },
+  {
+   "key": "osc2_waveform",
+   "name": "Osc 2 Wave",
+   "options": [
+    "Triangle",
+    "Shark",
+    "Saw",
+    "Square",
+    "Wide",
+    "Narrow"
+   ],
+   "default": "Saw"
+  },
+  {
+   "key": "osc3_range",
+   "name": "Osc 3 Range",
+   "options": [
+    "LO",
+    "32'",
+    "16'",
+    "8'",
+    "4'",
+    "2'"
+   ],
+   "default": "8'"
+  },
+  {
+   "key": "osc3_frequency",
+   "name": "Osc 3 Freq",
+   "min": -7.5,
+   "max": 7.5,
+   "default": 0
+  },
+  {
+   "key": "osc3_waveform",
+   "name": "Osc 3 Wave",
+   "options": [
+    "Triangle",
+    "Rev Saw",
+    "Saw",
+    "Square",
+    "Wide",
+    "Narrow"
+   ],
+   "default": "Saw"
+  },
+  {
+   "key": "osc1_on",
+   "name": "Osc 1",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "On"
+  },
+  {
+   "key": "osc1_volume",
+   "name": "Osc 1 Vol",
+   "min": 0,
+   "max": 10,
+   "default": 8
+  },
+  {
+   "key": "ext_on",
+   "name": "Ext In",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "Off"
+  },
+  {
+   "key": "ext_volume",
+   "name": "Ext Vol",
+   "min": 0,
+   "max": 10,
+   "default": 5
+  },
+  {
+   "key": "osc2_on",
+   "name": "Osc 2",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "Off"
+  },
+  {
+   "key": "osc2_volume",
+   "name": "Osc 2 Vol",
+   "min": 0,
+   "max": 10,
+   "default": 8
+  },
+  {
+   "key": "noise_on",
+   "name": "Noise",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "Off"
+  },
+  {
+   "key": "noise_volume",
+   "name": "Noise Vol",
+   "min": 0,
+   "max": 10,
+   "default": 8
+  },
+  {
+   "key": "noise_type",
+   "name": "Noise Type",
+   "options": [
+    "White",
+    "Pink"
+   ],
+   "default": "White"
+  },
+  {
+   "key": "osc3_on",
+   "name": "Osc 3",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "Off"
+  },
+  {
+   "key": "osc3_volume",
+   "name": "Osc 3 Vol",
+   "min": 0,
+   "max": 10,
+   "default": 8
+  },
+  {
+   "key": "filter_mode",
+   "name": "Filter Mode",
+   "options": [
+    "LO",
+    "HI"
+   ],
+   "default": "LO"
+  },
+  {
+   "key": "filter_mod",
+   "name": "Filter Mod",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "Off"
+  },
+  {
+   "key": "keyboard_control_1",
+   "name": "Kbd Ctrl 1",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "On"
+  },
+  {
+   "key": "keyboard_control_2",
+   "name": "Kbd Ctrl 2",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "Off"
+  },
+  {
+   "key": "cutoff",
+   "name": "Cutoff",
+   "min": -5,
+   "max": 5,
+   "default": 0
+  },
+  {
+   "key": "emphasis",
+   "name": "Emphasis",
+   "min": 0,
+   "max": 10,
+   "default": 0
+  },
+  {
+   "key": "contour_amount",
+   "name": "Contour Amt",
+   "min": 0,
+   "max": 10,
+   "default": 5
+  },
+  {
+   "key": "filter_attack",
+   "name": "F Attack",
+   "min": 0,
+   "max": 10,
+   "default": 0
+  },
+  {
+   "key": "filter_decay",
+   "name": "F Decay",
+   "min": 0,
+   "max": 10,
+   "default": 4
+  },
+  {
+   "key": "filter_sustain",
+   "name": "F Sustain",
+   "min": 0,
+   "max": 10,
+   "default": 5
+  },
+  {
+   "key": "loudness_attack",
+   "name": "L Attack",
+   "min": 0,
+   "max": 10,
+   "default": 0
+  },
+  {
+   "key": "loudness_decay",
+   "name": "L Decay",
+   "min": 0,
+   "max": 10,
+   "default": 4
+  },
+  {
+   "key": "loudness_sustain",
+   "name": "L Sustain",
+   "min": 0,
+   "max": 10,
+   "default": 8
+  },
+  {
+   "key": "volume",
+   "name": "Volume",
+   "min": 0,
+   "max": 10,
+   "default": 10
+  },
+  {
+   "key": "main_output",
+   "name": "Main Out",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "On"
+  },
+  {
+   "key": "a440",
+   "name": "A-440",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "Off"
+  },
+  {
+   "key": "glide_on",
+   "name": "Glide Sw",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "Off"
+  },
+  {
+   "key": "decay_on",
+   "name": "Decay Sw",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "On"
+  },
+  {
+   "key": "mod_wheel",
+   "name": "Mod Wheel",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "key": "midi_bend_range",
+   "name": "Bend Range",
+   "min": 0,
+   "max": 8.07,
+   "default": 2,
+   "unit": "st"
+  },
+  {
+   "key": "feedback",
+   "name": "Feedback",
+   "min": 0,
+   "max": 10,
+   "default": 0
+  },
+  {
+   "key": "drive",
+   "name": "Drive",
+   "min": 0,
+   "max": 24,
+   "default": 0,
+   "unit": "dB"
+  },
+  {
+   "key": "level",
+   "name": "Level",
+   "min": -30,
+   "max": 12,
+   "default": 0,
+   "unit": "dB"
+  },
+  {
+   "key": "auto_gain",
+   "name": "Auto Gain",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "On"
+  },
+  {
+   "key": "auto_db",
+   "name": "Auto dB",
+   "min": -15,
+   "max": 0,
+   "default": 0,
+   "display": "string"
+  },
+  {
+   "key": "spread",
+   "name": "Width",
+   "min": 0,
+   "max": 100,
+   "default": 0,
+   "unit": "%"
+  },
+  {
+   "key": "inner",
+   "name": "Inner",
+   "min": 0,
+   "max": 100,
+   "default": 0,
+   "unit": "%"
+  },
+  {
+   "key": "double",
+   "name": "Detune",
+   "min": 0,
+   "max": 100,
+   "default": 20,
+   "unit": "%"
+  },
+  {
+   "key": "played_as",
+   "name": "Played As",
+   "options": [
+    "SCATTER",
+    "DOUBLE"
+   ],
+   "default": "SCATTER"
+  },
+  {
+   "key": "placement",
+   "name": "Placement",
+   "options": [
+    "EVEN",
+    "CENTER"
+   ],
+   "default": "EVEN"
+  },
+  {
+   "key": "bass_comp",
+   "name": "Bass Comp",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "Off"
+  },
+  {
+   "key": "patch",
+   "name": "Out>Ext Patch",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "Off"
+  },
+  {
+   "key": "dot_1",
+   "name": "Field 1",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "key": "dot_2",
+   "name": "Field 2",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "key": "dot_3",
+   "name": "Field 3",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "key": "dot_4",
+   "name": "Field 4",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "key": "dot_5",
+   "name": "Field 5",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "key": "dot_6",
+   "name": "Field 6",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "key": "dot_7",
+   "name": "Field 7",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "key": "dot_8",
+   "name": "Field 8",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "key": "dot_9",
+   "name": "Field 9",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "key": "dot_10",
+   "name": "Field 10",
+   "min": 0,
+   "max": 1,
+   "default": 0
+  },
+  {
+   "key": "note_priority",
+   "name": "Priority",
+   "options": [
+    "Low",
+    "Last",
+    "High"
+   ],
+   "default": "Low"
+  },
+  {
+   "key": "retrigger",
+   "name": "Retrigger",
+   "options": [
+    "Off",
+    "On"
+   ],
+   "default": "Off"
+  }
+ ]
+}

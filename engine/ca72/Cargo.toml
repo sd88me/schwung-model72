@@ -1,0 +1,15 @@
+[package]
+name = "ca72"
+description = "Real-time models of the Minimoog Model D's circuits (vendored from idlefoundry/ca-72; see ../VENDORED.md)"
+version = "0.2.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+publish = false
+
+[features]
+profile = []
+twins = []
+count = []
+
+[dependencies]
+libm = "0.2"

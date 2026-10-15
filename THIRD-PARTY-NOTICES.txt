@@ -1,0 +1,25 @@
+THIRD-PARTY NOTICES FOR MODEL-72 (SCHWUNG MODULE)
+
+Model-72 is free software under the GNU General Public License, version 3 or later (LICENSE). Its source is at
+https://github.com/sd88me/schwung-model72 (each release's tag is the corresponding source).
+
+CA-72 (GPL-3.0-or-later)
+  Copyright (C) 2026 Idle Foundry Ltd.   https://github.com/idlefoundry/ca-72   commit 3f990769036481210c8a0d8e53d480e9661827e7
+  The real-time circuit and light models (engine/ca72/), the factory presets, and the voice-character code
+  (engine/ca72-mpc/src/character.rs). Changes: engine/VENDORED.md.
+
+plugin-kit (GPL-3.0-or-later)
+  Copyright (C) 2026 Idle Foundry Ltd.   https://github.com/idlefoundry/plugin-kit   commit 4c0f0f3
+  The stereo placement code (engine/ca72-mpc/src/stereo.rs, from crates/plugin-kit-stereo/src/place.rs).
+
+Schwung (MIT)
+  Copyright (c) Charles Vestal and contributors   https://github.com/charlesvestal/schwung
+  The plugin API header (vendor/schwung/plugin_api_v1.h).
+
+libm 0.2 (MIT)
+  Copyright (c) the Rust project and contributors   https://github.com/rust-lang/compiler-builtins   statically linked.
+
+The Rust standard library and core (MIT OR Apache-2.0), statically linked.
+
+Trademarks: "Minimoog" is a trademark of Moog Music Inc.; "Ableton" and "Move" are trademarks of Ableton AG.
+Model-72 is not affiliated with or endorsed by any of them, nor by Idle Foundry Ltd.
