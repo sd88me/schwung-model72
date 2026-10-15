@@ -81,6 +81,16 @@ int main(void) {
         a->set_param(h, "volume", "5");
         CHECK(get("volume") == 10, "and not writable");
     }
+    {   /* a saved preset: Schwung reads "state" and recalls it by writing it back */
+        static char saved[8000];
+        a->set_param(h, "preset", "3"); a->set_param(h, "cutoff", "-1.5"); a->set_param(h, "at_mod", "1");
+        CHECK(a->get_param(h, "state", saved, sizeof saved) > 500 && strstr(saved, "at_mod=1"), "state reads, with AT > Mod");
+        a->set_param(h, "preset", "1"); a->set_param(h, "at_mod", "0");
+        CHECK(get("cutoff") != -1.5, "(another sound loaded)");
+        a->set_param(h, "state", saved);
+        CHECK(get("cutoff") == -1.5 && get("patch") == 1 && get("at_mod") == 1, "writing it back recalls the saved sound");
+        a->set_param(h, "at_mod", "0");
+    }
     CHECK(get("auto_db") <= 0 && get("auto_db") > -16, "Auto dB reads");
     CHECK(a->get_param(h, "no_such_key", buf, sizeof buf) < 0, "an unknown key reads as missing");
 

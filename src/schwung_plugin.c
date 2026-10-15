@@ -139,6 +139,13 @@ static int enum_index(const char *key, const char *val) {
 static void sw_set(void *p, const char *key, const char *val) {
     wrap_t *w = p;
     if (!ready(w) || !key || !val) return;
+    if (!strcmp(key, "state")) {   /* a saved preset or set: the engine's state, and AT > Mod (the plugin's own) */
+        ca72_set_param(w->eng, "state", val);
+        const char *at = strstr(val, "at_mod=");
+        if (at && (at == val || at[-1] == ';')) { w->at_mod = atoi(at + 7) != 0; send_mod(w); }
+        derive_switches(w);
+        return;
+    }
     char num[16];
     char *endp; (void)strtod(val, &endp);
     if (val[0] && *endp) {   /* not a number: an option label */
@@ -152,7 +159,6 @@ static void sw_set(void *p, const char *key, const char *val) {
         if (!strcmp(key, DERIVED[i][0])) return;
     if (!strcmp(key, "ext_on") || !strcmp(key, "main_output") || !strcmp(key, "feedback") || !strcmp(key, "volume")) return;
     ca72_set_param(w->eng, key, val);
-    if (!strcmp(key, "state")) { derive_switches(w); return; }
     for (int i = 0; i < NDERIVED; i++)
         if (!strcmp(key, DERIVED[i][1])) ca72_set_param(w->eng, DERIVED[i][0], strtod(val, NULL) > 0.0 ? "1" : "0");
 }
@@ -179,6 +185,11 @@ static int sw_get(void *p, const char *key, char *buf, int n) {
     if (!strcmp(key, "preset")) return snprintf(buf, (size_t)n, "%d", w->preset);
     if (!strcmp(key, "preset_name")) return copy_str(buf, n, PRESETS[w->preset].name);
     if (!strcmp(key, "at_mod")) return snprintf(buf, (size_t)n, "%d", w->at_mod);
+    if (!strcmp(key, "state")) {
+        int r = ca72_get_param(w->eng, key, buf, n - 16);
+        if (r <= 0) return -1;
+        return r - 1 + snprintf(buf + r - 1, (size_t)(n - r + 1), ";at_mod=%d", w->at_mod);
+    }
     int r = ca72_get_param(w->eng, key, buf, n);
     return r > 0 ? r - 1 : -1;
 }
