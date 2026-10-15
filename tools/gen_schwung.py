@@ -54,7 +54,7 @@ NAMES = {
     "osc2_range": ("Osc 2 Range", "Range 2"), "osc2_waveform": ("Osc 2 Wave", "Wave 2"), "osc2_frequency": ("Osc 2 Freq", "Freq 2"),
     "osc3_range": ("Osc 3 Range", "Range 3"), "osc3_waveform": ("Osc 3 Wave", "Wave 3"), "osc3_frequency": ("Osc 3 Freq", "Freq 3"),
     "osc1_volume": ("Osc 1 Volume", "Osc 1"), "osc2_volume": ("Osc 2 Volume", "Osc 2"), "osc3_volume": ("Osc 3 Volume", "Osc 3"),
-    "noise_volume": ("Noise Volume", "Noise"), "ext_volume": ("Ext In / Patch", "Patch"), "noise_type": ("Noise Type", "Color"),
+    "noise_volume": ("Noise Volume", "Noise"), "ext_volume": ("Ext In / Feedback", "Fdbk"), "noise_type": ("Noise Type", "Color"),
     "drive": ("Filter Drive", "Drive"), "bass_comp": ("Bass Comp", "BassC"),
     "contour_amount": ("Contour Amount", "Amount"), "filter_attack": ("Filter Attack", "Attack"),
     "filter_decay": ("Filter Decay", "Decay"), "filter_sustain": ("Filter Sustain", "Sustain"),

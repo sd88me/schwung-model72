@@ -26,7 +26,7 @@ the playable eight: **Cutoff, Emphasis, Contour Amount, Filter Decay, Loudness D
 | Page | Knobs 1-8 |
 |---|---|
 | **Oscillators** | Osc 1 Range · Osc 1 Wave · Osc 2 Range · Osc 2 Wave · Osc 2 Freq · Osc 3 Range · Osc 3 Wave · Osc 3 Freq |
-| **Mixer** | Osc 1 · Osc 2 · Osc 3 · Noise · Patch (Ext In) · Noise Type · Drive · Bass Comp |
+| **Mixer** | Osc 1 · Osc 2 · Osc 3 · Noise · Ext In / Feedback · Noise Type · Drive · Bass Comp |
 | **Filter** | Cutoff · Emphasis · Contour Amount · Attack · Decay · Sustain · Filter Mode · Filter Mod |
 | **Loudness** | Attack · Decay · Sustain · Volume · Level · Auto Gain, and Auto Gain's correction in dB (a readout) |
 | **Controller** | Tune · Glide · Glide Switch · Decay Switch · A-440 · Kbd Control 1 · Kbd Control 2 |
@@ -44,12 +44,12 @@ It is CA-72's instrument with a few changes for a box with pads and eight knobs:
 - **No source switches.** OSC 1, 2, 3 and NOISE play while their volume is above 0. At 0 the module switches the source
   off, exactly as the panel's switch does (it costs nothing then); on the instrument a volume of 0 is already about
   -140 dB, so nothing is lost.
-- **PATCH is always wired.** The output is cabled into EXTERNAL INPUT, the classic feedback mod, and the **Patch (Ext In)**
+- **PATCH is always wired.** The output is cabled into EXTERNAL INPUT, the classic feedback mod, and the **Ext In / Feedback**
   volume is how much: 0 is unpatched. EXTERNAL INPUT takes no other audio.
 - **AT > Mod.** Pad pressure (polyphonic or channel aftertouch) turns the modulation wheel. The higher of the pressure and
   CC 1 wins, and the Mod Wheel knob adds as before. Move has no wheels: pitch bend and CC 1 come in over USB MIDI.
 - **Presets.** CA-72's 19 factory sounds and an Init, converted to this panel: a switched-off source comes in at volume
-  0, and Patch is 0 unless the sound used PATCH (Feedback Funk does).
+  0, and Ext In / Feedback is 0 unless the sound used PATCH (Feedback Funk does).
 - **Dropped:** MAIN OUT (always on).
 
 ## Performance and accuracy: the hybrid approach
