@@ -10,9 +10,9 @@ the real-time models were derived from those simulations and tested against them
 against a hardware instrument. It is an exceptionally accurate and excellent-sounding digital emulation, and it is the
 reason this module exists.
 
-This is the Move edition of [Model-72 for MPC and Force](https://github.com/sd88me/mpc-vst-model72): the same engine
-(`engine/`, a pinned copy), with no skin. Its panel is laid out as Move's knob pages, and it plays in a Signal Chain
-slot like any Schwung synth, with no computer and no other software.
+Model-72 puts that engine on Move as a native Schwung module, its panel laid out as Move's knob pages, and makes it run
+in real time on Move's CPU. It plays in a Signal Chain slot like any Schwung synth, with no computer and no other
+software.
 
 > Model-72 is an unofficial, independent port. It is **not affiliated with or endorsed by Idle Foundry Ltd., Moog
 > Music Inc. or Ableton AG.** "Minimoog" is a trademark of Moog Music Inc., used here only to say what CA-72 models.
@@ -39,18 +39,18 @@ High, PLAYED AS Scatter / Double ...). Everything is saved with the set.
 
 ## The Move panel
 
-It is the MPC plugin's instrument with a few changes for a keyboardless box with eight knobs:
+It is CA-72's instrument with a few changes for a box with pads and eight knobs:
 
 - **No source switches.** OSC 1, 2, 3 and NOISE play while their volume is above 0. At 0 the module switches the source
   off, exactly as the panel's switch does (it costs nothing then); on the instrument a volume of 0 is already about
   -140 dB, so nothing is lost.
 - **PATCH is always wired.** The output is cabled into EXTERNAL INPUT, the classic feedback mod, and the **Patch (Ext In)**
-  volume is how much: 0 is unpatched. EXTERNAL INPUT has no other audio (on the MPC neither).
+  volume is how much: 0 is unpatched. EXTERNAL INPUT takes no other audio.
 - **AT > Mod.** Pad pressure (polyphonic or channel aftertouch) turns the modulation wheel. The higher of the pressure and
   CC 1 wins, and the Mod Wheel knob adds as before. Move has no wheels: pitch bend and CC 1 come in over USB MIDI.
 - **Presets.** CA-72's 19 factory sounds and an Init, converted to this panel: a switched-off source comes in at volume
   0, and Patch is 0 unless the sound used PATCH (Feedback Funk does).
-- **Dropped:** the skin and the STEREO tab's live field of the voices, and MAIN OUT (always on).
+- **Dropped:** MAIN OUT (always on).
 
 ## Performance and accuracy: the hybrid approach
 
@@ -58,15 +58,15 @@ CA-72's full circuit voice is far too heavy for a small ARM board in real time. 
 Potato mode), whose laws are fitted to the circuit model. Model-72 uses both, as a switch:
 
 - **QUALITY LO**: CA-72's light voice. MONO, POLY (2 to 10 voices) or UNISON, with ENTROPY, stereo, DOUBLE, DRIVE and
-  AUTO GAIN. About 1.3 to 2.7 % of a Force core per voice, so a full chord or a ten-voice unison fits.
+  AUTO GAIN. Light enough that a full chord or a ten-voice unison fits.
 - **QUALITY HI**: one voice, the **hybrid**. The light oscillators, mixer and contours drive the *circuit's own filter*:
   board 4's transistor ladder, solved in real time, through its real control node, in place of the light filter. In
   measurements it stays within **0.2 to 0.6 dB** of CA-72's full circuit model on most patches (third-octave bands), and
   the filter self-oscillates in tune to within a cent. DOUBLE is off in HI.
 
-The circuit filter is built on a background thread when the module loads (about 12 s on a Force); LO plays straight
-away, and HI plays the light filter until it is ready. The CPU figures are the Force's; on Move they have yet to be
-measured, HI especially (30 to 55 % of a Force core).
+The circuit filter is built on a background thread when the module loads (it takes some seconds); LO plays straight
+away, and HI plays the light filter until it is ready. HI is far heavier than LO; its cost on Move has yet to be
+measured.
 
 ## Features
 
@@ -108,7 +108,8 @@ Needs Docker (the Rust engine and the aarch64 cross-compiler run in `engine/Dock
 
 | | |
 |---|---|
-| `engine/` | The engine, a pinned copy of mpc-vst-model72's `engine/` with its `params.json` and `presets.json`. Developed there: `scripts/sync_engine.sh [../mpc-vst-model72]` refreshes it, `scripts/check_engine.sh` (run by `test.sh`) fails on a hand edit |
+| `engine/ca72/` | CA-72's real-time model, vendored; `src/light.rs` is the only file changed (`engine/VENDORED.md`) |
+| `engine/ca72-mpc/` | The engine: voices, MODE, ENTROPY, stereo, AUTO GAIN, the hybrid HI voice; fitting and bench examples. `engine/params.json` and `presets.json` are its parameters and factory sounds |
 | `tools/gen_schwung.py` | The pages, names, ranges, the converted presets and `module.json` (generates `src/schwung_meta.h`) |
 | `src/schwung_plugin.c` | The Schwung plugin: the engine on a worker thread, the derived switches, AT > Mod, presets |
 | `test/host_sim.c` | Drives the plugin the way Schwung's chain host does |
