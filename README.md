@@ -31,7 +31,7 @@ the playable eight: **Cutoff, Emphasis, Contour Amount, Filter Decay, Loudness D
 | **Loudness** | Attack · Decay · Sustain · Level · Auto Gain, and Auto Gain's correction in dB (a readout) |
 | **Controller** | Tune · Glide · Glide Switch · Decay Switch · A-440 · Kbd Control 1 · Kbd Control 2 |
 | **Modulation** | Mod Mix · Osc Mod · Osc 3 Control · Mod Wheel · Bend Range · AT > Mod |
-| **Voice** | Quality (LO / HI) · Mode · Voices · Entropy · Note Priority · Retrigger |
+| **Voice** | Quality (LO / HI, experimental) · Mode · Voices · Entropy · Note Priority · Retrigger |
 | **Stereo** | Width · Inner · Detune · Played As · Placement |
 
 Every switch on the panel is an enum: Off / On, or its named positions (FILTER MODE LO / HI, NOTE PRIORITY Low / Last /
@@ -67,8 +67,11 @@ Potato mode), whose laws are fitted to the circuit model. Model-72 uses both, as
   the filter self-oscillates in tune to within a cent. DOUBLE is off in HI.
 
 The circuit filter is built on a background thread when the module loads (it takes some seconds); LO plays straight
-away, and HI plays the light filter until it is ready. HI is far heavier than LO; its cost on Move has yet to be
-measured.
+away, and HI plays the light filter until it is ready.
+
+**HI is experimental on Move.** Measured on a Move with Model-72 alone in the chain, LO takes about 0.2 ms of each
+2.9 ms audio block (7 %), HI about 0.8-0.9 ms (26-31 %). With HI the whole audio frame runs close to its budget and
+overruns occasionally, which can be heard as clicks. Use HI for one sound on its own, and LO everywhere else.
 
 ## Features
 
@@ -98,7 +101,7 @@ Needs Schwung on the Move. Download `model-72-module.tar.gz` from the
 
 Then add **Model-72** to a Signal Chain slot. (`scripts/deploy.sh [host] --reboot` does the same from a build.)
 
-Status: builds and passes the host simulation; not yet run on a Move. Reports are welcome.
+Status: running on a Move: the presets, pages and LO played; HI plays but may click (above). Reports are welcome.
 
 ## Building
 
